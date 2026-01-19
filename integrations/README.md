@@ -27,14 +27,56 @@ python slack_bot.py
 - Conversation context per user
 - Error handling and logging
 
+### 🎮 Discord Bot
+A Discord bot integration for communities and servers.
+
+**Files:**
+- `discord_bot.py` - Main bot implementation
+- `discord_setup.md` - Detailed setup instructions
+
+**Quick Start:**
+```bash
+cd integrations
+pip install -r requirements.txt
+# Set up environment variables (see discord_setup.md)
+python discord_bot.py
+```
+
+**Features:**
+- Command-based interactions (`!coach chat`)
+- Direct message support
+- Conversation context per user
+- Error handling and logging
+
+### 🎨 React Embeddable Widget
+A beautiful, customizable React widget for embedding in websites.
+
+**Files:**
+- `react_widget/src/Widget.jsx` - React component
+- `react_widget/src/Widget.css` - Styling
+- `react_widget/README.md` - Integration guide
+
+**Quick Start:**
+```bash
+cd integrations/react_widget
+npm install
+npm run build
+```
+
+**Features:**
+- Modern, responsive UI
+- Customizable colors and position
+- Real-time streaming
+- Mobile-friendly
+- Easy to embed
+
 ## 🚀 Coming Soon
 
-More integration examples will be added:
-- Discord bot
+More integration examples:
 - WhatsApp integration (Twilio)
 - Telegram bot
 - Microsoft Teams bot
-- React embeddable widget component
+- Email integration
 
 ## 📚 Documentation
 
