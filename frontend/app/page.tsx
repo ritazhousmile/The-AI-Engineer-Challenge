@@ -20,6 +20,7 @@ export default function Home() {
   const [inputMessage, setInputMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [conversationId, setConversationId] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll to bottom when new messages arrive
@@ -66,7 +67,10 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: currentMessage }),
+        body: JSON.stringify({ 
+          message: currentMessage,
+          conversation_id: conversationId || undefined
+        }),
       })
 
       if (!response.ok) {
@@ -110,7 +114,16 @@ export default function Home() {
                   })
                 }
                 
+                // Store conversation ID if provided
+                if (data.conversation_id && !conversationId) {
+                  setConversationId(data.conversation_id)
+                }
+                
                 if (data.done) {
+                  // Ensure conversation ID is set
+                  if (data.conversation_id) {
+                    setConversationId(data.conversation_id)
+                  }
                   break
                 }
               } catch (e) {
@@ -135,6 +148,7 @@ export default function Home() {
   const handleClearChat = () => {
     setMessages([])
     setError(null)
+    setConversationId(null)
   }
 
   return (
